@@ -1,6 +1,8 @@
 package com.bridgelabz.greetingappdevelopment.controller;
 
 import com.bridgelabz.greetingappdevelopment.model.Greeting;
+import com.bridgelabz.greetingappdevelopment.service.IGreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -18,5 +20,21 @@ public class GreetingController {
     @GetMapping("greeting/{name}")
     public Greeting greetings(@PathVariable String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    }
+
+    @PostMapping("/postGreeting")
+    public Greeting sayHello(@RequestBody Greeting greeting) {
+        return new Greeting(counter.incrementAndGet(),String.format(template, greeting.getGreeting()));
+    }
+    @PutMapping("/putGreeting/{counter}")
+    public Greeting sayHello(@PathVariable long counter, @RequestParam(value = "content")String content){
+        return new Greeting(counter,String.format(template, content));
+    }
+    @Autowired
+    private IGreetingService greetingService;
+
+    @GetMapping("greeting/service")
+    public Greeting greeting() {
+        return greetingService.greetingMessage();
     }
 }
