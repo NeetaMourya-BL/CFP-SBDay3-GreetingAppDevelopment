@@ -2,10 +2,12 @@ package com.bridgelabz.greetingappdevelopment.controller;
 
 import com.bridgelabz.greetingappdevelopment.dto.UserDto;
 import com.bridgelabz.greetingappdevelopment.model.Greeting;
+import com.bridgelabz.greetingappdevelopment.model.User;
 import com.bridgelabz.greetingappdevelopment.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -34,5 +36,10 @@ public class GreetingController {
     @PostMapping("/greeting")
     public String greetingMessage(@RequestBody UserDto user) {
         return greetingService.greetingMessageByName(user);
+    }
+
+    @GetMapping("/find")
+    public Optional<User> findGreetById(@RequestParam long id) {
+        return greetingService.getById(id);
     }
 }
