@@ -17,4 +17,7 @@ public interface IGreetingService {
     Greeting editGreetingById(long id, String name);
 
     Greeting greetingMessageByNameNew(long id, String name);
+
+    void delete(long id);
+
 }

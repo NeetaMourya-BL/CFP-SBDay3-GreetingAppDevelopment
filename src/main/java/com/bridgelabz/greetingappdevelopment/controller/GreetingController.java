@@ -51,4 +51,10 @@ public class GreetingController {
 
         return greetingService.greetingMessageByNameNew(id, name);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteByID(@PathVariable("id") long id) {
+        greetingService.delete(id);
+        return "Deleted Succesfully";
+    }
 }
