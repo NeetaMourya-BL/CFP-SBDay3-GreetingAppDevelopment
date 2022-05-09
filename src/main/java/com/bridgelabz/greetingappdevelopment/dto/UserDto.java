@@ -1,6 +1,6 @@
-package com.bridgelabz.greetingappdevelopment.component;
+package com.bridgelabz.greetingappdevelopment.dto;
 
-public class UserComponent {
+public class UserDto {
     private String firstName;
     private String lastName;
 
