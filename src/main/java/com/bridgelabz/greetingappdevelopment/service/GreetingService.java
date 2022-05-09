@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -37,5 +38,10 @@ public class GreetingService implements IGreetingService{
     public Optional<User> getById(long id) {
         Optional<User> greetById = iGreetingRepository.findById(id);
         return greetById;
+    }
+
+    @Override
+    public List<User> getAll() {
+        return iGreetingRepository.findAll();
     }
 }
