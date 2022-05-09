@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class GreetingService implements IGreetingService{
     private static String template = "Hello %s";
 
-//    private static final String template = "Hello world";
+//  private static final String template = "Hello world";
     private final AtomicLong counter = new AtomicLong();
 
     @Autowired
@@ -53,6 +53,13 @@ public class GreetingService implements IGreetingService{
 //        User particularGreeting = iGreetingRepository.getById(id);
         Greeting newGreeting = new Greeting(id, String.format(template, name));
       return iGreetingRepository.save(newGreeting);
+    }
+
+    @Override
+    public Greeting greetingMessageByNameNew(long id, String name) {
+        Greeting newGreeting = new Greeting(id, String.format(template, name));
+        iGreetingRepository.save(newGreeting);
+        return null;
     }
 
 }
