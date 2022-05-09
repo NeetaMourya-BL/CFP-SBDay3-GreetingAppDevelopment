@@ -9,9 +9,11 @@ import java.util.Optional;
 
 public interface IGreetingService {
     Greeting greetingMessage();
-    String greetingMessageByName(UserDto userDto);
-    Optional<User> getById(long id);
+    User greetingMessageByName(UserDto userDto);
+    Optional<Greeting> getById(long id);
 
-    List<User> getAll();
+    List<Greeting> getAll();
+
+    Greeting editGreetingById(long id, String name);
 
 }

@@ -35,17 +35,23 @@ public class GreetingController {
     }
 
     @PostMapping("/greeting")
-    public String greetingMessage(@RequestBody UserDto user) {
+    public User greetingMessage(@RequestBody UserDto user) {
         return greetingService.greetingMessageByName(user);
     }
 
     @GetMapping("/find")
-    public Optional<User> findGreetById(@RequestParam long id) {
+    public Optional<Greeting> findGreetById(@RequestParam long id) {
         return greetingService.getById(id);
     }
 
     @GetMapping("/all")
-    public List<User> getAll(){
+    public List<Greeting> getAll(){
         return greetingService.getAll();
     }
+
+    @PutMapping("/editGreeting/{id}")
+    public Greeting editGreetingById(@PathVariable("id") long id, @RequestParam(value = "name") String name) {
+        return greetingService.editGreetingById(id, name);
+    }
+
 }
